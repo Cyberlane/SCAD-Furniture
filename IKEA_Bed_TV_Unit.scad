@@ -21,10 +21,8 @@ module bed_frame() {
 	}
 }
 
-//48
-
 translate([0,0,0]) {
-	color([0,0,1]) {
+	color("Brown", 0.6) {
 		bed_frame();
 	}
 }
