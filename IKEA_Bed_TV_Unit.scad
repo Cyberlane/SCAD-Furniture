@@ -28,7 +28,19 @@ module tv_stand() {
 			cube([156.7,25,3]);
 		}
 		translate([0,22,3]) {
-			cube([156.7,3,30]);
+			cube([156.7,3,80]);
+		}
+		translate([0,3,3]) {
+			cube([3,19,80]);
+		}
+		translate([153.7,3,3]) {
+			cube([3,19,80]);
+		}
+		translate([0,0,83]) {
+			cube([156.7,25,3]);
+		}
+		translate([75.85,0,3]) {
+			cube([5,22,80]);
 		}
 	}
 }
