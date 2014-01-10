@@ -20,9 +20,26 @@ module bed_frame() {
 		}
 	}
 }
+// TV needs 60 height
 
-translate([0,0,0]) {
+module tv_stand() {
+	union() {
+		translate([0,0,0]) {
+			cube([156.7,25,3]);
+		}
+		translate([0,22,3]) {
+			cube([156.7,3,30]);
+		}
+	}
+}
+
+translate([0,25,0]) {
 	color("Brown", 0.6) {
 		bed_frame();
+	}
+}
+translate([0,0,0]) {
+	color("Green", 0.4) {
+		tv_stand();
 	}
 }
