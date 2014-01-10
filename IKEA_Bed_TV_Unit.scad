@@ -22,55 +22,64 @@ module bed_frame() {
 }
 // TV needs 60 height
 
+BedWidth = 156.7;
+CabinetDepth = 25;
+ThinBoard = 3;
+ThickBoard = 5;
+ShelfSpacing = 20;
+ShelfWidth = 75;
+TvAreaHeight = 60;
+ShelfTotalHeight = 80;
+
 module tv_stand() {
 	union() {
-		translate([3,0,86]) {
-			cube([150.7,3,60]);
+		translate([ThinBoard,0,ShelfTotalHeight+(ThinBoard*2)]) {
+			cube([BedWidth-(ThinBoard*2),ThinBoard,TvAreaHeight]);
 		}
-		translate([0,0,86]) {
-			cube([3,25,60]);
+		translate([0,0,ShelfTotalHeight+(ThinBoard*2)]) {
+			cube([ThinBoard,CabinetDepth,TvAreaHeight]);
 		}
-		translate([153.7,0,86]) {
-			cube([3,25,60]);
+		translate([BedWidth-ThinBoard,0,ShelfTotalHeight+(ThinBoard*2)]) {
+			cube([ThinBoard,CabinetDepth,TvAreaHeight]);
 		}
-		translate([0,0,146]) {
-			cube([156.7,25,3]);
+		translate([0,0,TvAreaHeight+ShelfTotalHeight+(ThinBoard*2)]) {
+			cube([BedWidth,CabinetDepth,ThinBoard]);
 		}
 		translate([0,0,0]) {
-			cube([156.7,25,3]);
+			cube([BedWidth,CabinetDepth,ThinBoard]);
 		}
-		translate([0,22,3]) {
-			cube([156.7,3,80]);
+		translate([0,CabinetDepth-ThinBoard,ThinBoard]) {
+			cube([BedWidth,ThinBoard,ShelfTotalHeight]);
 		}
-		translate([0,3,3]) {
-			cube([3,19,80]);
+		translate([0,ThinBoard,ThinBoard]) {
+			cube([ThinBoard,CabinetDepth-(ThinBoard*2),ShelfTotalHeight]);
 		}
-		translate([153.7,3,3]) {
-			cube([3,19,80]);
+		translate([BedWidth-ThinBoard,ThinBoard,ThinBoard]) {
+			cube([ThinBoard,CabinetDepth-(ThinBoard*2),ShelfTotalHeight]);
 		}
-		translate([0,0,83]) {
-			cube([156.7,25,3]);
+		translate([0,0,ShelfTotalHeight+ThinBoard]) {
+			cube([BedWidth,CabinetDepth,ThinBoard]);
 		}
-		translate([75.85,0,3]) {
-			cube([5,22,80]);
+		translate([(BedWidth-ThickBoard)/2,0,ThinBoard]) {
+			cube([ThickBoard,CabinetDepth-ThinBoard,ShelfTotalHeight]);
 		}
-		translate([3,3,20]) {
-			cube([75,20,3]);
+		translate([ThinBoard,ThinBoard,ShelfSpacing]) {
+			cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
 		}
-		translate([78,3,20]) {
-			cube([75,20,3]);
+		translate([ShelfWidth+ThinBoard,ThinBoard,ShelfSpacing]) {
+			cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
 		}
-		translate([3,3,43]) {
-			cube([75,20,3]);
+		translate([ThinBoard,ThinBoard,(ShelfSpacing*2)+ThinBoard]) {
+			cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
 		}
-		translate([78,3,43]) {
-			cube([75,20,3]);
+		translate([ShelfWidth+ThinBoard,ThinBoard,(ShelfSpacing*2)+ThinBoard]) {
+			cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
 		}
-		translate([3,3,66]) {
-			cube([75,20,3]);
+		translate([ThinBoard,ThinBoard,(ShelfSpacing*3)+(ThinBoard*2)]) {
+			cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
 		}
-		translate([78,3,66]) {
-			cube([75,20,3]);
+		translate([ShelfWidth+ThinBoard,ThinBoard,(ShelfSpacing*3)+(ThinBoard*2)]) {
+			cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
 		}
 	}
 }
