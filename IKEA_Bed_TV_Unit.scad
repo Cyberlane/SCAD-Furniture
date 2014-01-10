@@ -23,13 +23,13 @@ module bed_frame() {
 // TV needs 60 height
 
 BedWidth = 156.7;
-CabinetDepth = 25;
+CabinetDepth = 35;
 ThinBoard = 3;
 ThickBoard = 5;
 ShelfSpacing = 20;
-ShelfWidth = 75;
 TvAreaHeight = 60;
 ShelfTotalHeight = 80;
+ShelfWidth = (BedWidth-(ThinBoard*2)-ThickBoard)/2;
 
 module tv_stand() {
 	union() {
@@ -84,7 +84,7 @@ module tv_stand() {
 	}
 }
 
-translate([0,25,0]) {
+translate([0,35,0]) {
 	color("Brown", 0.6) {
 		bed_frame();
 	}
