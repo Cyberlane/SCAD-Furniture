@@ -24,6 +24,18 @@ module bed_frame() {
 
 module tv_stand() {
 	union() {
+		translate([3,0,86]) {
+			cube([150.7,3,60]);
+		}
+		translate([0,0,86]) {
+			cube([3,25,60]);
+		}
+		translate([153.7,0,86]) {
+			cube([3,25,60]);
+		}
+		translate([0,0,146]) {
+			cube([156.7,25,3]);
+		}
 		translate([0,0,0]) {
 			cube([156.7,25,3]);
 		}
@@ -41,6 +53,24 @@ module tv_stand() {
 		}
 		translate([75.85,0,3]) {
 			cube([5,22,80]);
+		}
+		translate([3,3,20]) {
+			cube([75,20,3]);
+		}
+		translate([78,3,20]) {
+			cube([75,20,3]);
+		}
+		translate([3,3,43]) {
+			cube([75,20,3]);
+		}
+		translate([78,3,43]) {
+			cube([75,20,3]);
+		}
+		translate([3,3,66]) {
+			cube([75,20,3]);
+		}
+		translate([78,3,66]) {
+			cube([75,20,3]);
 		}
 	}
 }
