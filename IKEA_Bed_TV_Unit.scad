@@ -1,4 +1,14 @@
+// Bed Variables
 BedWidth = 156.7;
+FooterHeight = 30;
+BedBoardThickness = 5;
+ThickerBedBoard = BedBoardThickness + 0.2;
+InnerSideBeamHeight = 12.5;
+InnerSideBeamThickness = 4.5;
+UpperSideBeamWidth = 7.5;
+SideBeamLength = 201.2;
+HeadBoardHeight = 78;
+// Shelf Variables
 CabinetDepth = 35;
 ThinBoard = 3;
 ThickBoard = 5;
@@ -10,22 +20,22 @@ ShelfWidth = (BedWidth-(ThinBoard*2)-ThickBoard)/2;
 module bed_frame() {
 	union() {
 		translate([0,0,0]) {
-			cube([BedWidth,5.2,30]);
+			cube([BedWidth,ThickerBedBoard,FooterHeight]);
 		}
-		translate([149.2,5.2,25]) {
-			cube([7.5,201,5]);
+		translate([BedWidth-UpperSideBeamWidth,ThickerBedBoard,FooterHeight-BedBoardThickness]) {
+			cube([UpperSideBeamWidth,SideBeamLength,BedBoardThickness]);
 		}
-		translate([0,5.2,25]) {
-			cube([7.5,201,5]);
+		translate([0,ThickerBedBoard,FooterHeight-BedBoardThickness]) {
+			cube([UpperSideBeamWidth,SideBeamLength,BedBoardThickness]);
 		}
-		translate([3,5.2,12.5]) {
-			cube([4.5,201,17.5]);
+		translate([UpperSideBeamWidth-InnerSideBeamThickness,ThickerBedBoard,(FooterHeight-BedBoardThickness)/2]) {
+			cube([InnerSideBeamThickness,SideBeamLength,InnerSideBeamHeight]);
 		}
-		translate([149.2,5.2,12.5]){
-			cube([4.5,201,17.5]);
+		translate([BedWidth-UpperSideBeamWidth,ThickerBedBoard,(FooterHeight-BedBoardThickness)/2]) {
+			cube([InnerSideBeamThickness,SideBeamLength,InnerSideBeamHeight]);
 		}
-		translate([0,206.2,0]) {
-			cube([BedWidth,5,78]);
+		translate([0,SideBeamLength+BedBoardThickness,0]) {
+			cube([BedWidth,BedBoardThickness,HeadBoardHeight]);
 		}
 	}
 }
