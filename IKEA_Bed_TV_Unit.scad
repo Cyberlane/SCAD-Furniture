@@ -41,66 +41,75 @@ module bed_frame() {
 	}
 }
 
+module tv_stand_shelf() {
+	cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
+}
+
+module tv_stand_mid_shelf() {
+	cube([BedWidth-(ThickBoard*2),CabinetDepth,ThickBoard]);
+}
+
+module tv_stand_long_shelf() {
+	cube([BedWidth,CabinetDepth,ThickBoard]);
+}
+
+module tv_side_panel() {
+	cube([ThickBoard,CabinetDepth,ShelfTotalHeight+TvAreaHeight+1]);
+}
+
 module tv_stand() {
 	union() {
 		// Top Board
 		translate([0,0,TvAreaHeight+ShelfTotalHeight+(ThinBoard*2)]) {
-			cube([BedWidth,CabinetDepth,ThinBoard]);
-		}
-		// TV Backing
-		translate([ThinBoard,0,ShelfTotalHeight+(ThinBoard*2)]) {
-			cube([BedWidth-(ThinBoard*2),ThinBoard,TvAreaHeight]);
-		}
-		// TV Right Panel
-		translate([0,0,ShelfTotalHeight+(ThinBoard*2)]) {
-			cube([ThinBoard,CabinetDepth,TvAreaHeight]);
-		}
-		// TV Left Panel
-		translate([BedWidth-ThinBoard,0,ShelfTotalHeight+(ThinBoard*2)]) {
-			cube([ThinBoard,CabinetDepth,TvAreaHeight]);
+			tv_stand_long_shelf();
 		}
 		// TV Base Board
-		translate([0,0,ShelfTotalHeight+ThinBoard]) {
-			cube([BedWidth,CabinetDepth,ThinBoard]);
+		translate([ThickBoard,0,ShelfTotalHeight+ThinBoard]) {
+			tv_stand_mid_shelf();
+		}
+		// Bottom Board
+		translate([0,0,0]) {
+			tv_stand_long_shelf();
+		}
+		// TV Backing
+		translate([0,0,ShelfTotalHeight+(ThinBoard*2)]) {
+			cube([BedWidth,ThinBoard,TvAreaHeight]);
 		}
 		// Foot Board
 		translate([0,CabinetDepth-ThinBoard,ThinBoard]) {
 			cube([BedWidth,ThinBoard,ShelfTotalHeight]);
 		}
 		// Left Panel
-		translate([0,ThinBoard,ThickBoard]) {
-			cube([ThinBoard,CabinetDepth-(ThinBoard*2),ShelfTotalHeight]);
+		translate([0,0,ThickBoard]) {
+			tv_side_panel();
 		}
 		// Right Panel
-		translate([BedWidth-ThinBoard,ThinBoard,ThickBoard]) {
-			cube([ThinBoard,CabinetDepth-(ThinBoard*2),ShelfTotalHeight]);
+		translate([BedWidth-ThickBoard,0,ThickBoard]) {
+			tv_side_panel();
 		}
 		// Mid Divider
 		translate([(BedWidth-ThickBoard)/2,0,ThickBoard]) {
 			cube([ThickBoard,CabinetDepth-ThinBoard,ShelfTotalHeight]);
 		}
-		// Shelves
+		// Left Shelves
 		translate([ThinBoard,ThinBoard,ShelfSpacing]) {
-			cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
-		}
-		translate([ShelfWidth+ThinBoard,ThinBoard,ShelfSpacing]) {
-			cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
+			tv_stand_shelf();
 		}
 		translate([ThinBoard,ThinBoard,(ShelfSpacing*2)+(ThinBoard)]) {
-			cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
-		}
-		translate([ShelfWidth+ThinBoard,ThinBoard,(ShelfSpacing*2)+(ThinBoard)]) {
-			cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
+			tv_stand_shelf();
 		}
 		translate([ThinBoard,ThinBoard,(ShelfSpacing*3)+(ThinBoard*2)]) {
-			cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
+			tv_stand_shelf();
 		}
-		translate([ShelfWidth+ThinBoard,ThinBoard,(ShelfSpacing*3)+(ThinBoard*2)]) {
-			cube([ShelfWidth,CabinetDepth-(ThinBoard*2),ThinBoard]);
+		// Right Shelves
+		translate([ShelfWidth+ThickBoard+ThinBoard,ThinBoard,ShelfSpacing]) {
+			tv_stand_shelf();
 		}
-		//Bottom Board
-		translate([0,0,0]) {
-			cube([BedWidth,CabinetDepth,ThickBoard]);
+		translate([ShelfWidth+ThickBoard+ThinBoard,ThinBoard,(ShelfSpacing*2)+(ThinBoard)]) {
+			tv_stand_shelf();
+		}
+		translate([ShelfWidth+ThickBoard+ThinBoard,ThinBoard,(ShelfSpacing*3)+(ThinBoard*2)]) {
+			tv_stand_shelf();
 		}
 	}
 }
