@@ -17,6 +17,36 @@ TvAreaHeight = 60;
 ShelfTotalHeight = 80;
 ShelfWidth = (BedWidth-(ThinBoard*2)-ThickBoard)/2;
 SupportHeight = FooterHeight-BedBoardThickness-InnerSideBeamHeight;
+// Side Table Variables
+ExtraThinBoard = 2;
+TableHeight = 30;
+TableWidth = 30;
+TableDepth = 36;
+
+module table() {
+	union() {
+		translate([ExtraThinBoard,0,0]) {
+			//Bottom
+			cube([TableWidth-(ExtraThinBoard*2),TableDepth-ExtraThinBoard,ExtraThinBoard]);
+		}
+		translate([0,TableDepth-ExtraThinBoard,0]) {
+			//Back
+			cube([TableWidth,ExtraThinBoard,HeadBoardHeight-ExtraThinBoard]);
+		}
+		translate([0,0,0]) {
+			//Left
+			cube([ExtraThinBoard,TableDepth-ExtraThinBoard,TableHeight]);
+		}
+		translate([TableWidth-ExtraThinBoard,0,0]) {
+			//Right
+			cube([ExtraThinBoard,TableDepth-ExtraThinBoard,TableHeight]);
+		}
+		translate([0,0,TableHeight]) {
+			//Top
+			cube([TableWidth,TableDepth-ExtraThinBoard,ExtraThinBoard]);
+		}
+	}
+}
 
 module bed_frame() {
 	union() {
@@ -141,5 +171,15 @@ translate([5,0,0]) {
 translate([0,0,0]) {
 	color("Blue", 0.4) {
 		tv_stand_support();
+	}
+}
+translate([-25,208,0]) {
+	color("Orange", 0.4) {
+		table();
+	}
+}
+translate([161.6,208,0]) {
+	color("Orange", 0.4) {
+		table();
 	}
 }
