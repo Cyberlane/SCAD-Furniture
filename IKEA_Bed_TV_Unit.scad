@@ -158,6 +158,20 @@ module tv_stand_support() {
 	}
 }
 
+module headboard_shelf() {
+	union() {
+		translate([0,0,0]) {
+			cube([2,10,76]);
+		}
+		translate([154.7,0,0]) {
+			cube([2,10,76]);
+		}
+		translate([0,0,76]) {
+			cube([156.7,10,2]);
+		}
+	}
+}
+
 translate([5,35,0]) {
 	color("Brown", 0.6) {
 		bed_frame();
@@ -173,13 +187,14 @@ translate([0,0,0]) {
 		tv_stand_support();
 	}
 }
-translate([-25,208,0]) {
-	color("Orange", 0.4) {
+color("Orange", 0.4) {
+	translate([-25,208,0]) {
 		table();
 	}
-}
-translate([161.6,208,0]) {
-	color("Orange", 0.4) {
+	translate([161.6,208,0]) {
 		table();
+	}
+	translate([5,246,0]) {
+		headboard_shelf();
 	}
 }
