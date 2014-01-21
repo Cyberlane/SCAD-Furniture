@@ -1,3 +1,11 @@
+module bracket() {
+	scale([0.3,0.3,0.3]) {
+		rotate([0,90,270]) {
+			import("right_angle_support.stl");
+		}
+	}
+}
+
 // Bed Variables
 BedWidth = 156.7;
 FooterHeight = 30;
@@ -168,6 +176,13 @@ module headboard_shelf() {
 		}
 		translate([0,0,76]) {
 			cube([156.7,10,2]);
+		}
+		translate([2,6,76]) {
+			bracket();
+		}
+		translate([154.7,6,76]) {
+			rotate([0,0,180])
+			bracket();
 		}
 	}
 }
